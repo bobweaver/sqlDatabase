@@ -2,8 +2,9 @@
     \group sqldatabase_examples
     \ingroup all-examples
     \title SqlDataBase Examples
+    \page sqldatabase-example.html
     \brief Make a TableView Model in Qml from database sources
-    \{SqlDataBase} Uses the QtSql modual and Provides support for
-    Qml Based applications. \{SqlDataBase} is used to connect to a
+    \l{SqlDataBase} Uses the QtSql modual and Provides support for
+    Qml Based applications. \l{SqlDataBase} is used to connect to a
     Database's and query
 */

@@ -7,11 +7,16 @@ version                 = 1.0
 # program can convert the qhp file into a qch file which can be opened in
 # Qt Assistant and/or Qt Creator.
 
+
+include($QT_INSTALL_DOCS/global/qt-html-templates-offline.qdocconf)
+
+
+
 # Defines the name of the project. You cannot use operators (+, =, -) in
 # the name. Properties for this project are set using a qhp.<projectname>.property
 # format.
 qhp.projects = SqlDataBase
-qhp.SqlDataBase.file = qtmultimedia.qhp
+qhp.SqlDataBase.file = sqldatabase.qhp
 qhp.SqlDataBase.namespace = org.SqlDataBase.1.0
 qhp.SqlDataBase.indexTitle = SqlDataBase
 qhp.SqlDataBase.virtualFolder  = sqldatamodel
@@ -28,10 +33,10 @@ qhp.SqlDataBase.subprojects.qmltypes.selectors = fake:qmlclass
 qhp.SqlDataBase.subprojects.qmltypes.sortPages = true
 
 exampledirs += ../examples \
-               snippets
+            snippets
 
-# Specify example install dir under QT_INSTALL_EXAMPLES
-examplesinstallpath = ../examples
+# Specify example install dir under
+examplesinstallpath = ../examples/
 
 headerdirs += ../sqldatabase
 
@@ -39,6 +44,10 @@ imagedirs += images
 
 sourcedirs += ../sqldatabase
 
-#excludedirs += ../../
+excludedirs += ../../
+
+sources.fileextensions  = "*.qdoc"
+
+outputdir = $OUTDIR
 
 depends                 += qtcore qtdoc qtquick qtqml qsql

@@ -7,3 +7,11 @@ qmake
 make
 make install
 ```
+
+## Installing Documention
+
+```
+qmake 
+make docs
+make install
+```
