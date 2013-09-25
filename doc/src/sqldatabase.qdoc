@@ -1,0 +1,40 @@
+/*!
+\page overview.html
+\title SqlDatabase
+\brief A set of APIs for working with Databases.
+
+\{SqlDataBase} Uses the QtSql modual and Provides support for Qml
+Based applications. \{SqlDataBase} is used to connect to a Database's
+and query them
+
+\section1 Features
+
+Here are some examples of what can be done with SqlDataBase APIs:
+
+\list
+\li Connect to databases
+\li querydatabases
+\li create models from a query
+\endlist
+
+\section1  Components
+
+\{SqlDataBase} APIs are categorized into two main components.  More
+information (including background information and class references) is
+available here:
+
+\list
+\li \l {SqlModel Overview}
+\li \l {SqlQuery Overview}
+\endlist
+
+
+\section1 Reference Documentation
+
+\section2 QML Types
+The QML types are accessed by using:
+\code
+import SqlDataBase 1.0
+\endcode
+\annotatedlist sqldatabase_qml
+*/

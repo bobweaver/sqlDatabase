@@ -1,0 +1,169 @@
+/*!
+    \group qml-sqldatabase
+    \title QML SqlDataBase Plugin
+    QML Support for the SqlDataBase API.
+*/
+
+/*!
+    \page qml-sqldatabase.html
+
+    \title SqlDataBase QML API
+
+    \brief A QML API for the SqlDataBase module.
+
+    \section1 Overview
+
+    The SqlDataBase is used to connect to six different types of databases. Note you will
+    have to have the drivers for these database types
+    \list
+    \li QMYSQL	MySQL Driver
+    \li QOCI	Oracle Call Interface Driver
+    \l iQODBC	ODBC Driver (includes Microsoft SQL Server)
+    \li QPSQL	PostgreSQL Driver
+    \li QSQLITE	SQLite version 3 or above
+    \li QSQLITE2	SQLite version
+    \endlist
+
+    \section1 Types
+
+    \section2 SqlConnection
+
+    \l SqlConnection is an easy way to set up a connection and set a id to the element to call its methods .
+
+    The code extract below shows the creation and use of an SqlDataBase instance.
+
+    \qml
+
+    import QtQuick 2.0
+    import SqlDataBase 1.0
+    // ...
+
+    Item {
+        width: 640
+        height: 360
+
+    SqlConnection{
+        id:connect
+        databaseType: "mysql"
+        source: "127.0.0.1"
+        databaseName: "Foo"
+        user: "User"
+        password: "12345"
+        port: 3306
+    }
+
+        MouseArea {
+            id: playArea
+            anchors.fill: parent
+            onPressed:  {
+                connect.createConnection();
+            }
+        }
+    }
+
+    \endqml
+
+    The snippet above shows how the set the id of a item so that we can all its method  \l {SqlConnection::createConnection()}{createConnection()}
+    This is what creates the connection of the Database and Must be called in order to connecto to the desired database.
+     \l {SqlConnection::databaseType}{databaseType} allows us to connect to a desired tyoe of database (mysql, sql, sqlite, postgres)
+
+
+    Much of the getting / setting of \l SqlConnection parameters is done through properties. These include
+    \table 70%
+        \header
+            \li Property
+            \li Description
+        \row
+            \li \l {SqlConnection::databaseType}{databaseType}
+            \li The Type of database you want to connect to (mysql, sql, sqlite, postgres)
+        \row
+            \li \l {SqlConnection::source}{source}
+            \li Set the source of the Database.
+        \row
+            \li \l {SqlConnection::databaseName}{databaseName}
+            \li Sets the Name of the DataBase that you want to connect to.
+        \row
+            \li \l {SqlConnection::user}{user}
+            \li Sets the User to Login to the DataBase if Needed
+        \row
+            \li \l{SqlConnection::password}{password}
+            \li Set the Password if needed for the user to login.
+        \row
+            \li \l{SqlConnection::port}{port}
+            \li Set the Open port in which to connect with if needed
+    \endtable
+
+    The set of signals available allow the developer to create custom behavior when the following events occur,
+
+    \table 70%
+        \header
+            \li Signal
+            \li Description
+        \row
+            \li \l{SqlConnection::createConnection}{createConnection}
+            \li Called when wanting to create a connection .
+    \endtable
+
+    \section2 SqlModel
+
+    \l SqlModel enables us to make querys on are database and create models out of these querysfor use in ListViews and other Views
+    See the Example File tableview to see how to make a Table like View.
+    Here is a Example of Creating a model with a mysql driver
+    \qml
+    import QtQuick 2.0
+    import SqlDataBase 1.0
+    // ...
+
+    Component{
+        id: sqlDel
+        Item {
+        // ....
+        }
+    }
+
+    ListView{
+        id:list
+        //,,
+        model:   sqlModelFinal
+        delegate: sqlDel
+
+      Component.onCompleted: {
+            setup connection
+            connect.createConnection();
+
+            // use the C++ function to query the selected database
+            // in the future this will be in the propertys of qml
+           sqlModelFinal.setQuery("
+                                    SELECT *
+                                    FROM  `inputgroup`
+                                    ORDER BY  `inputgroup`.`cardinputid` ASC
+                                    LIMIT 0 , 30
+                                    ")
+        }
+    }
+    SqlModel{
+        id: sqlModelFinal
+    }
+
+    SqlConnection{
+        id:connect
+        databaseType: "mysql"
+    //..
+   }
+}
+
+    \endqml
+
+    \l SqlModel is used to call the method  {SqlModel::setQuery}{setQuery} which in turn makes a Model out of the table or whatever
+    it is that you. It uses the Coloumn Names of the Tables to Make up the Role Names that are In turn Used in the Deleageate.
+
+    \table 70%
+        \header
+            \li Signal
+            \li Description
+        \row
+            \li \l{SqlModel::setQuery}{setQuery}
+            \li Set the Query of the Model that you wish to create. .
+    \endtable
+    \annotatedlist sqldatabase_qml
+*/

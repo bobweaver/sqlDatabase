@@ -1,0 +1,44 @@
+project                 = SqlDataBase
+description             =  SqlDataBase Documentation
+#url                     = http://qt-project.org/doc/qt-$QT_VER/qtmultimedia
+version                 = 1.0
+
+# The following parameters are for creating a qhp file, the qhelpgenerator
+# program can convert the qhp file into a qch file which can be opened in
+# Qt Assistant and/or Qt Creator.
+
+# Defines the name of the project. You cannot use operators (+, =, -) in
+# the name. Properties for this project are set using a qhp.<projectname>.property
+# format.
+qhp.projects = SqlDataBase
+qhp.SqlDataBase.file = qtmultimedia.qhp
+qhp.SqlDataBase.namespace = org.SqlDataBase.1.0
+qhp.SqlDataBase.indexTitle = SqlDataBase
+qhp.SqlDataBase.virtualFolder  = sqldatamodel
+
+# For listing child nodes in Qt Creator or Assistant.
+qhp.SqlDataBase.subprojects = classes qmltypes
+qhp.SqlDataBase.subprojects.classes.title = C++ Classes
+qhp.SqlDataBase.subprojects.classes.indexTitle = SqlDataBase C++ Classes
+qhp.SqlDataBase.subprojects.classes.selectors = class fake:headerfile
+qhp.SqlDataBase.subprojects.classes.sortPages = true
+qhp.SqlDataBase.subprojects.qmltypes.title = QML Types
+qhp.SqlDataBase.subprojects.qmltypes.indexTitle = Qt SqlDataBase QML Types
+qhp.SqlDataBase.subprojects.qmltypes.selectors = fake:qmlclass
+qhp.SqlDataBase.subprojects.qmltypes.sortPages = true
+
+exampledirs += ../examples \
+               snippets
+
+# Specify example install dir under QT_INSTALL_EXAMPLES
+examplesinstallpath = ../examples
+
+headerdirs += ../sqldatabase
+
+imagedirs += images
+
+sourcedirs += ../sqldatabase
+
+#excludedirs += ../../
+
+depends                 += qtcore qtdoc qtquick qtqml qsql

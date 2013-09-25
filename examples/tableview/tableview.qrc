@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/tableview">
+        <file>tableview.qml</file>
+    </qresource>
+</RCC>
